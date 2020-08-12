@@ -45,7 +45,7 @@ export default {
     }
   },
   mounted(){
-    let url = "/common/adver-getadver"
+    let url = "/api/common/adver-getadver"
     Axios.get(url).then((res)=>{
       console.log(res);
     })
