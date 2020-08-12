@@ -32,10 +32,23 @@
 </template>
 
 <script>
+import Axios from 'axios';
+import { log } from 'util';
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data(){
+    return {
+      
+    }
+  },
+  mounted(){
+    let url = "/common/adver-getadver"
+    Axios.get(url).then((res)=>{
+      console.log(res);
+    })
   }
 }
 </script>
