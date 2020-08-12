@@ -1,6 +1,6 @@
- <template>
+<template>
   <div>
-    order-pay
+    order-header
   </div>
 </template>
 
@@ -10,9 +10,6 @@
 
 <script>
 export default {
-  name:'order-pay',
-  components:{
-   
-  }
+  name:'order-header'
 }
 </script>
