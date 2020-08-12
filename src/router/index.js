@@ -9,6 +9,7 @@ import Order from '../pages/order.vue'
 import OrderList from '../pages/orderList.vue'
 import OrderConfirm from '../pages/orderConfirm.vue'
 import OrderPay from '../pages/orderPay.vue'
+import Login from '../pages/login.vue'
 
 Vue.use(VueRouter)
 
@@ -41,6 +42,11 @@ Vue.use(VueRouter)
       path: '/cart',
       name: 'cart',
       component: Cart
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
     },
     {
       path: '/order',
