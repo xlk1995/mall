@@ -17,20 +17,20 @@ Vue.use(VueRouter)
       path: '/',
       name: 'home',
       component: Home,
-      redirect: '/index',
+      redirect: 'index',
       children:[
         {
-          path: '/index',
+          path: 'index',
           name: 'index',
           component: Index
         },
         {
-          path: '/product/:id',
+          path: 'product/:id',
           name: 'product',
           component: Product
         },
         {
-          path: '/detail/:id',
+          path: 'detail/:id',
           name: 'detail',
           component: Detail
         },
