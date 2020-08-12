@@ -12,14 +12,15 @@ import Storage from './storage'
 import { log } from 'util';
 export default {
   data(){
-    return {}
+    return {
+      res:{}
+    }
   },
   mounted(){
-    Storage.clear('stuname','student')
-    
-
-    // let res = Storage.getStorage();
-    // console.log(res);
+    this.axios.get('/login').then(res=>{
+      this.res = res
+      
+    })
 
     
   }
