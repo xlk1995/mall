@@ -230,6 +230,7 @@
               box-shadow:0px 7px 6px 0px rgba(0, 0, 0, 0.11);
               transition:all .5s;
               z-index: 10;
+              background: #ffffff;
               .product{
                 width: 16.6%;
                 height: 220px;
