@@ -4,7 +4,9 @@
   </div>
 </template>
 
-<style>
+<style lang="scss">
+  @import './assets/scss/config.scss';
+  @import './assets/scss/reset.scss';
 </style>
 
 <script>
@@ -13,14 +15,10 @@ import { log } from 'util';
 export default {
   data(){
     return {
-      res:{}
+
     }
   },
   mounted(){
-    this.axios.get('/login').then(res=>{
-      this.res = res
-      
-    })
 
     
   }
