@@ -64,7 +64,8 @@
         <swiper :options="swiperOptions">
           <swiper-slide v-for="(item, index) in slideList" :key="index">
             <a :href="'product/'+item.id">
-              <img v-lazy="item.img">
+              <img :src="item.img">
+             
             </a>
           </swiper-slide>
            <div class="swiper-pagination"  slot="pagination"></div>
@@ -181,7 +182,7 @@ export default {
         },
         {
           id:'',
-          img:'/imgs/slider/slide-1.jpg'
+          img:'/imgs/slider/slide-5.jpg'
         }
       ],
       menuList:[
