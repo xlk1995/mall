@@ -3,6 +3,7 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueLazyLoad from 'vue-lazyload'
 import App from './App.vue'
 import env from './env.js'
 import { log } from 'util';
@@ -17,6 +18,9 @@ if(mock){
 // 把axios 挂载到vue-axios上
 Vue.use(VueAxios,axios)
 // console.log(env);
+Vue.use(VueLazyLoad,{
+  loading:'/imgs/loading-svg/loading-bars.svg'
+})
 
 axios.defaults.baseURL = '/api'
 axios.defaults.timeout = 8000

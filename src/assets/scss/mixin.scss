@@ -6,10 +6,31 @@
   align-items: $col;
 }
 
+// 背景图片
 @mixin bgImg($w:0, $h:0, $url:'',$s:contain){
   width: $w;
   height: $h;
   display: inline-block;
   background: url($url) no-repeat center;
   background-size: $s;
+}
+
+// 绝对定位的图片
+@mixin positionImg($pos:absolute,$top:0,$right:0,$w:0,$h:0,$url:'',$s:contain){
+  position: $pos;
+  top: $top;
+  right: $right;
+  width: $w;
+  height: $h;
+  background: url($url) no-repeat center;
+  background-size: $s;
+}
+
+// absolute fixed定位
+@mixin position($pos:absolute,$left:0,$top:0,$w:100%,$h:100%){
+  position: $pos;
+  left: $left;
+  top: $top;
+  width:$w;
+  height: $h;
 }
