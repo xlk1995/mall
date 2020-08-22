@@ -4,6 +4,7 @@ import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueLazyLoad from 'vue-lazyload'
+import VueCookie from 'vue-cookie'
 import App from './App.vue'
 import env from './env.js'
 import { log } from 'util';
@@ -17,10 +18,12 @@ if(mock){
 
 // 把axios 挂载到vue-axios上
 Vue.use(VueAxios,axios)
-// console.log(env);
+// 使用懒加载
 Vue.use(VueLazyLoad,{
   loading:'/imgs/loading-svg/loading-bars.svg'
 })
+// 使用vue-cookie
+Vue.use(VueCookie)
 
 axios.defaults.baseURL = '/api'
 axios.defaults.timeout = 8000
@@ -32,9 +35,14 @@ axios.interceptors.response.use((response)=>{
   if(code === 0){
     return res
   }else if(code === 10){
-    window.location.href = '/login'
+    let path = location.pathname
+    if(path !== '/index'){
+      window.location.href = '/login' 
+    }
   }else{
+    res = response.data
     alert(res.msg)
+    return Promise.reject(res)
   }
 })
 
