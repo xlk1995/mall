@@ -202,6 +202,7 @@
           padding-left: 209px;
           width: 643px;
           line-height: 112px;
+          box-sizing: border-box;
           .item-menu{
             display: inline-block;
             color: #333333;
