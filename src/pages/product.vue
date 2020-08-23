@@ -222,8 +222,6 @@
 import ProductParam from '@/components/ProductParam';
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import { LineToLineMappedSource } from 'webpack-sources';
-import { setTimeout } from 'timers';
 export default {
   name:'product',
   components:{
@@ -239,6 +237,7 @@ export default {
         spaceBetween : 30,
         pagination: {
           el: '.swiper-pagination',
+          clickable :true,
         },
       },
       showSlide:'',

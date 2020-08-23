@@ -103,7 +103,7 @@
                 <div class="item-info">
                   <h3>{{item.name}}</h3>
                   <p>{{item.subtitle}}</p>
-                  <p class="price" @click="addCart">{{item.price+'元'}}</p>
+                  <p class="price" @click="addCart(item.id)">{{item.price+'元'}}</p>
                 </div>
 
               </div>
@@ -244,8 +244,15 @@ export default {
       })
     },
     // 加入购物车
-    addCart(){
+    addCart(id){
       this.showModel = true
+      this.axios.post('/carts',{
+        productId: id,
+        selected:true
+      }).then((res)=>{
+        // 把添加的数据加到vuex中
+        this.$store.dispatch('saveCartCount',res.cartTotalQuantity)
+      })
     },
     goToCart(){
       this.$router.push('/cart')
