@@ -6,13 +6,18 @@
   align-items: $col;
 }
 
-// 背景图片
+// 行内背景图片
 @mixin bgImg($w:0, $h:0, $url:'',$s:contain){
   width: $w;
   height: $h;
   display: inline-block;
   background: url($url) no-repeat center;
   background-size: $s;
+}
+// 占满整个屏幕的背景图片
+@mixin bg($url:''){
+  background: url($url) no-repeat center;
+  
 }
 
 // 绝对定位的图片

@@ -2,7 +2,7 @@
   <div class="nav" :class="{'is_fixed':isFixed}">
     <div class="container">
       <div class="nav-left">
-        <h2>小米手机</h2>
+        <h2>{{title}}</h2>
       </div>
       <div class="nav-right">
         <a href="javascript:;">概述</a><span>|</span>
@@ -22,11 +22,12 @@
     line-height: 70px;
     border-top: 1px solid $colorH;
     background: $colorG;
+    z-index: 100;
     &.is_fixed{
       position: fixed;
       top: 0;
       width: 100%;
-      box-shadow: 0 5px 5px $colorC;
+      box-shadow: 0 5px 5px $colorE;
     }
     .container{
       @include flex();
@@ -60,6 +61,9 @@ export default {
     return{
       isFixed: false,
     }
+  },
+  props:{
+    title:String
   },
   mounted(){
     window.addEventListener('scroll',this.initHeight)

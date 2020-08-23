@@ -30,7 +30,7 @@ export default {
     ...mapActions(['saveUsername','saveCartCount']),
     // 获取用户信息
     getUser(){
-      this.axios.get('/user').then((res)=>{
+      this.axios.get('/user').then((res={})=>{
         let {username} = res
         // this.$store.dispatch('saveUsername',username)
         this.saveUsername(username)
@@ -39,7 +39,7 @@ export default {
 
     // 获取商品总和
     getCartCount(){
-      this.axios.get('/carts/products/sum').then((res)=>{
+      this.axios.get('/carts/products/sum').then((res=0)=>{
         // to-do 保存到vuex中
         // this.$store.dispatch('saveCartCount',res)
         this.saveCartCount(res)
