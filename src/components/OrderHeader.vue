@@ -27,7 +27,10 @@
         line-height: 55px;
         h3{
           font-size: 28px;
-
+        }
+        span{
+          font-size: 14px;
+          color: #999999;
         }
       }
     }

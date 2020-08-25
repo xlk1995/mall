@@ -58,10 +58,7 @@
 @import '@/assets/scss/mixin.scss';
 @import '@/assets/scss/config.scss';
   .cart{
-    .tips{
-      font-size: 14px;
-      color: #999999;
-    }
+
     .cart-wrapper{
       background-color: #F5F5F5;
       padding-bottom: 80px;
