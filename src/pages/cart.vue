@@ -274,13 +274,13 @@ export default {
           selected = item.productSelected;
       if(type === '-'){
         if(quantity === 1){
-          alert('至少保留一件商品')
+          this.$message.warning('至少保留一件商品')
           return
         }
         --quantity
       }else if(type === '+'){
         if(quantity > item.productStock){
-          alert('已经最大了~')
+          this.$message.warning('已经最大了~')
           return
         }
         ++quantity
@@ -303,7 +303,7 @@ export default {
     order(){
       let flag = this.cartProductVoList.every(item=>!item.productSelected)
       if(flag){
-        alert('至少选中一个商品！')
+        this.$message.warning('至少选中一个商品！')
         return
       }else{
         this.$router.push('/order/confirm')

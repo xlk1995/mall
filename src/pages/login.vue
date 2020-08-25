@@ -170,9 +170,15 @@ export default {
         username,
         password
       }).then(res=>{
-        this.$cookie.set('userId',res.id,{expires:'1M'})
+        this.$cookie.set('userId',res.id,{expires:'Session'})
         this.$store.dispatch('saveUsername', username)
-        this.$router.push('/index')
+        this.$message.success('登录成功')
+        this.$router.push({
+          name:'index',
+          params:{
+            from:'login'
+          }
+        })
       })
     },
     // 注册

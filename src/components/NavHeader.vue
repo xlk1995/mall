@@ -12,6 +12,7 @@
         <div class="topbar-user">
           <a href="javascript:;" v-if="username">{{username}}</a>
           <a href="javascript:;" v-if="!username" @click="login">登录</a>
+          <a href="javascript:;" v-if="username" @click="logout">退出</a>
           <a href="javascript:;" v-if="username">我的订单</a>
           <a href="javascript:;" class="my-cart" @click="goToCart">
             <span class="icon-cart"></span>
@@ -277,7 +278,8 @@
 </style>
 
 <script>
-import {mapState} from 'vuex';
+import {mapState,mapActions} from 'vuex';
+
 export default {
   name:'nav-header',
   data(){
@@ -286,6 +288,7 @@ export default {
     }
   },
   methods:{
+    ...mapActions(['saveUsername','saveCartCount']),
     getProductList(){
       this.axios.get('/products',{
         params:{
@@ -307,10 +310,43 @@ export default {
     },
     login(){
       this.$router.push('/login')
+    },
+    // 退出
+    logout(){
+      // 调用后台的退出方法
+      this.axios.post('/user/logout').then(res=>{
+        this.$message.success('退出成功')
+        // 把cookie清空
+        this.$cookie.set('userId','',{expires:'-1'})
+        // 把vuex中数据清空
+        this.saveUsername('')
+        this.saveCartCount('0')
+      })
+    },
+    getUser(){
+      this.axios.get('/user').then((res={})=>{
+        let {username} = res
+        // this.$store.dispatch('saveUsername',username)
+        this.saveUsername(username)
+      })
+    },
+    // 获取商品总和
+    getCartCount(){
+      this.axios.get('/carts/products/sum').then((res=0)=>{
+        // to-do 保存到vuex中
+        // this.$store.dispatch('saveCartCount',res)
+        this.saveCartCount(res)
+      })
     }
   },
   mounted(){
+    let params = this.$route.params.from
+    if(params === 'login'){
+      this.getUser()
+      this.getCartCount()
+    }
     this.getProductList()
+
   },
   filters:{
     currency(val){

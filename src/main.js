@@ -5,6 +5,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueLazyLoad from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
+import Message from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
 import App from './App.vue'
 import env from './env.js'
 import { log } from 'util';
@@ -25,6 +27,7 @@ Vue.use(VueLazyLoad,{
 // 使用vue-cookie
 Vue.use(VueCookie)
 
+Vue.prototype.$message = Message.Message
 axios.defaults.baseURL = '/api'
 axios.defaults.timeout = 8000
 //设置拦截器
@@ -42,7 +45,7 @@ axios.interceptors.response.use((response)=>{
     return Promise.reject(res)
   }else{
     res = response.data
-    alert(res.msg)
+    Message.Message.error(res.msg)
     return Promise.reject(res)
   }
 })
